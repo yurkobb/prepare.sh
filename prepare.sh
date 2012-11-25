@@ -65,7 +65,7 @@ if [ -z "$DIR" ]; then
     exit 1
 fi
 
-if [ ! -d "$DIR" -o "$DIR" -eq "--help" -o "$DIR" -eq "-h" -o "$DIR" -eq "-?" ]; then
+if [ ! -d "$DIR" -o "$DIR" = "--help" -o "$DIR" = "-h" -o "$DIR" = "-?" ]; then
     echo "Не вказано правильної теки з файлами до запису."
     exit 1
 fi
