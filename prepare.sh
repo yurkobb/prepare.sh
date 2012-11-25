@@ -48,8 +48,8 @@ md5sign () {
 ##############
 # Налаштунки #
 ##############
-BASEDIR=$(pwd)
-LISTDIR=$(pwd)/_contents/
+BASEDIR="$(pwd)"
+LISTDIR="$(pwd)/_contents/"
 TMPDIR=$(mktemp --directory --suffix=AR)
 LISTFILE=$TMPDIR/files.txt
 MD5FILE=md5sums.txt
@@ -65,7 +65,7 @@ if [ -z "$DIR" ]; then
     exit 1
 fi
 
-if [ ! -d "$DIR" ]; then
+if [ ! -d "$DIR" -o "$DIR" -eq "--help" -o "$DIR" -eq "-h" -o "$DIR" -eq "-?" ]; then
     echo "Не вказано правильної теки з файлами до запису."
     exit 1
 fi
@@ -78,7 +78,7 @@ if [ ! -d "$LISTDIR" ]; then
     mkdir $LISTDIR || exit 1
 fi
 
-if [ -w "$LISTDIR" ]; then
+if [ ! -w "$LISTDIR" ]; then
     echo "Бракує дозволу запису у теку $LISTDIR"
     exit 1
 fi
